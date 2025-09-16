@@ -81,14 +81,19 @@ export function ChatInterface() {
       })
 
       if (!response.ok) {
-        throw new Error("Failed to get response")
+        const errorData = await response.json().catch(() => null)
+        throw new Error(errorData?.error || `Server error: ${response.status}`)
       }
 
       const data = await response.json()
 
+      if (data.error) {
+        throw new Error(data.error)
+      }
+
       const assistantMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: data.message,
+        content: data.message || "I received your message but couldn't generate a proper response. Please try again.",
         role: "assistant",
         timestamp: new Date(),
       }
@@ -96,9 +101,21 @@ export function ChatInterface() {
       setMessages((prev) => [...prev, assistantMessage])
     } catch (error) {
       console.error("Error sending message:", error)
+      let errorContent = "Sorry, I'm having trouble connecting right now. Please try again in a moment."
+      
+      if (error instanceof Error) {
+        if (error.message.includes('model')) {
+          errorContent = "The AI model is currently unavailable. Please try again later."
+        } else if (error.message.includes('API key') || error.message.includes('401')) {
+          errorContent = "There's an authentication issue. Please check your API configuration."
+        } else if (error.message.includes('rate limit') || error.message.includes('429')) {
+          errorContent = "Too many requests. Please wait a moment before trying again."
+        }
+      }
+      
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: "Sorry, I'm having trouble connecting right now. Please try again in a moment.",
+        content: errorContent,
         role: "assistant",
         timestamp: new Date(),
       }
