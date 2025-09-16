@@ -8,7 +8,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 
 export default function Home() {
   return (
-    <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-100/50 dark:from-gray-950 dark:via-blue-950/20 dark:to-indigo-950/30 relative overflow-hidden">
         {/* Animated background elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -21,8 +21,8 @@ export default function Home() {
           <Header />
           <main className="flex-1">
             <HeroSection />
-            <div className="flex items-center justify-center p-4 pb-8">
-              <div className="w-full max-w-4xl">
+            <div className="flex items-center justify-center px-4 pb-8" id="chat-section">
+              <div className="w-full max-w-5xl mx-auto">
                 <ChatInterface />
               </div>
             </div>

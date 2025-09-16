@@ -117,19 +117,18 @@ export function ChatInterface() {
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto" data-chat-interface>
+    <div className="w-full max-w-5xl mx-auto" data-chat-interface>
       {/* Welcome Section */}
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-foreground mb-2 text-balance">Welcome to CampusHelper AI</h2>
-        <p className="text-muted-foreground text-lg text-pretty">
+      <div className="text-center mb-6 md:mb-8">
+        <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-2 text-balance">Welcome to CampusHelper AI</h2>
+        <p className="text-muted-foreground text-base md:text-lg text-pretty">
           Your intelligent assistant for all campus-related questions
         </p>
       </div>
 
-      {/* Chat Container */}
-      <Card className="h-[600px] flex flex-col shadow-2xl border-0 bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl rounded-3xl overflow-hidden">
+      <Card className="h-[500px] md:h-[600px] lg:h-[650px] flex flex-col shadow-2xl border-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-3xl">
         {/* Chat Header with Reset Button */}
-        <div className="flex items-center justify-between p-6 border-b border-white/20 dark:border-gray-700/30 bg-white/30 dark:bg-gray-800/30">
+        <div className="flex items-center justify-between p-4 md:p-6 border-b border-white/20 dark:border-gray-700/30 bg-white/40 dark:bg-gray-800/40">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             <span className="text-sm text-muted-foreground">AI Assistant Online</span>
@@ -138,7 +137,7 @@ export function ChatInterface() {
             variant="ghost"
             size="sm"
             onClick={resetConversation}
-            className="text-muted-foreground hover:text-foreground"
+            className="text-muted-foreground hover:text-foreground transition-colors duration-200 hover:bg-white/20 dark:hover:bg-gray-700/20"
           >
             <RotateCcw className="h-4 w-4 mr-2" />
             Reset Chat
@@ -146,14 +145,14 @@ export function ChatInterface() {
         </div>
 
         {/* Messages Area */}
-        <div className="flex-1 overflow-y-auto p-6 space-y-4 chat-scrollbar bg-gradient-to-b from-transparent to-white/10 dark:to-gray-900/10">
+        <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 chat-scrollbar bg-gradient-to-b from-transparent to-white/10 dark:to-gray-900/10">
           {messages.map((message) => (
             <MessageBubble key={message.id} message={message} />
           ))}
           {isLoading && (
             <div className="flex justify-start">
-              <div className="bg-muted rounded-2xl px-4 py-3 max-w-xs flex items-center gap-2">
-                <Loader2 className="h-4 w-4 animate-spin" />
+              <div className="bg-muted/80 backdrop-blur-sm rounded-2xl px-4 py-3 max-w-xs flex items-center gap-2 shadow-sm">
+                <Loader2 className="h-4 w-4 animate-spin text-blue-600" />
                 <span className="text-sm text-muted-foreground">Thinking...</span>
               </div>
             </div>
@@ -163,13 +162,13 @@ export function ChatInterface() {
 
         {/* Quick Suggestions */}
         {messages.length === 1 && (
-          <div className="px-6 pb-4">
+          <div className="px-4 md:px-6 pb-4">
             <QuickSuggestions onSuggestionClick={handleSendMessage} />
           </div>
         )}
 
         {/* Input Area */}
-        <div className="border-t border-white/20 dark:border-gray-700/30 p-6 bg-white/30 dark:bg-gray-800/30">
+        <div className="border-t border-white/20 dark:border-gray-700/30 p-4 md:p-6 bg-white/40 dark:bg-gray-800/40">
           <div className="flex gap-3">
             <Input
               ref={inputRef}
@@ -178,13 +177,13 @@ export function ChatInterface() {
               onKeyPress={handleKeyPress}
               placeholder="Ask me about campus life, schedules, events..."
               disabled={isLoading}
-              className="flex-1 rounded-2xl border-white/30 dark:border-gray-600/30 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm focus:border-blue-400/50 focus:ring-blue-400/20 h-12"
+              className="flex-1 rounded-2xl border-white/30 dark:border-gray-600/30 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm focus:border-blue-400/50 focus:ring-blue-400/20 h-12 text-base transition-all duration-200"
             />
             <Button
               onClick={() => handleSendMessage()}
               disabled={!input.trim() || isLoading}
               size="icon"
-              className="rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 h-12 w-12"
+              className="rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 h-12 w-12 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Send className="h-5 w-5" />
               <span className="sr-only">Send message</span>

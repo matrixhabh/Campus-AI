@@ -26,38 +26,42 @@ export function FeatureSection() {
   ]
 
   return (
-    <section className="py-20 px-4">
+    <section className="py-16 md:py-20 px-4" id="features-section">
       <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 text-balance">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4 text-balance">
             Why Choose CampusHelper AI?
           </h2>
-          <p className="text-lg text-muted-foreground text-pretty max-w-2xl mx-auto">
+          <p className="text-base md:text-lg text-muted-foreground text-pretty max-w-2xl mx-auto leading-relaxed">
             Experience the future of campus assistance with our intelligent, fast, and reliable AI companion.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
           {features.map((feature, index) => (
             <Card
               key={index}
-              className="relative p-8 border-0 bg-white/60 dark:bg-gray-900/60 backdrop-blur-sm hover:bg-white/80 dark:hover:bg-gray-900/80 transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
+              className="relative p-6 md:p-8 border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm hover:bg-white/95 dark:hover:bg-gray-800/95 transition-all duration-300 hover:scale-105 hover:shadow-2xl group rounded-2xl"
             >
               {/* Glowing border effect */}
               <div
-                className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} rounded-lg blur opacity-0 group-hover:opacity-20 transition-opacity duration-300`}
+                className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-300`}
               ></div>
 
               <div className="relative z-10">
                 <div
-                  className={`w-16 h-16 rounded-2xl bg-gradient-to-r ${feature.gradient} p-4 mb-6 mx-auto shadow-lg`}
+                  className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-r ${feature.gradient} p-3 md:p-4 mb-6 mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300`}
                 >
-                  <feature.icon className="w-8 h-8 text-white" />
+                  <feature.icon className="w-full h-full text-white" />
                 </div>
 
-                <h3 className="text-xl font-bold text-foreground mb-4 text-center">{feature.title}</h3>
+                <h3 className="text-lg md:text-xl font-bold text-gray-900 dark:text-gray-100 mb-4 text-center">
+                  {feature.title}
+                </h3>
 
-                <p className="text-muted-foreground text-center leading-relaxed">{feature.description}</p>
+                <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 text-center leading-relaxed">
+                  {feature.description}
+                </p>
               </div>
             </Card>
           ))}

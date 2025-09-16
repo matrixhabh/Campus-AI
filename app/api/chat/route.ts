@@ -38,7 +38,9 @@ Always be helpful, concise, and student-focused. Keep responses conversational a
     ]
 
     const { text } = await generateText({
-      model: groq("llama-3.1-70b-versatile"),
+      model: groq("llama-3.1-70b-versatile", {
+        apiKey: "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",
+      }),
       messages,
       maxTokens: 1000,
       temperature: 0.7,

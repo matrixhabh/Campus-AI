@@ -55,7 +55,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           )}
         </div>
 
-        <div className={cn("text-xs opacity-70 px-2", isUser ? "text-right" : "text-left")}>
+        <div className={cn("text-xs px-2 text-muted-foreground", isUser ? "text-right" : "text-left")}>
           {message.timestamp.toLocaleTimeString([], {
             hour: "2-digit",
             minute: "2-digit",
