@@ -117,7 +117,7 @@ export function ChatInterface() {
   }
 
   return (
-    <div className="w-full max-w-4xl mx-auto">
+    <div className="w-full max-w-4xl mx-auto" data-chat-interface>
       {/* Welcome Section */}
       <div className="text-center mb-8">
         <h2 className="text-3xl font-bold text-foreground mb-2 text-balance">Welcome to CampusHelper AI</h2>
@@ -127,9 +127,9 @@ export function ChatInterface() {
       </div>
 
       {/* Chat Container */}
-      <Card className="h-[600px] flex flex-col shadow-lg border-border/50">
+      <Card className="h-[600px] flex flex-col shadow-2xl border-0 bg-white/70 dark:bg-gray-900/70 backdrop-blur-xl rounded-3xl overflow-hidden">
         {/* Chat Header with Reset Button */}
-        <div className="flex items-center justify-between p-4 border-b border-border/50">
+        <div className="flex items-center justify-between p-6 border-b border-white/20 dark:border-gray-700/30 bg-white/30 dark:bg-gray-800/30">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
             <span className="text-sm text-muted-foreground">AI Assistant Online</span>
@@ -146,7 +146,7 @@ export function ChatInterface() {
         </div>
 
         {/* Messages Area */}
-        <div className="flex-1 overflow-y-auto p-4 space-y-4 chat-scrollbar">
+        <div className="flex-1 overflow-y-auto p-6 space-y-4 chat-scrollbar bg-gradient-to-b from-transparent to-white/10 dark:to-gray-900/10">
           {messages.map((message) => (
             <MessageBubble key={message.id} message={message} />
           ))}
@@ -163,14 +163,14 @@ export function ChatInterface() {
 
         {/* Quick Suggestions */}
         {messages.length === 1 && (
-          <div className="px-4 pb-2">
+          <div className="px-6 pb-4">
             <QuickSuggestions onSuggestionClick={handleSendMessage} />
           </div>
         )}
 
         {/* Input Area */}
-        <div className="border-t border-border/50 p-4">
-          <div className="flex gap-2">
+        <div className="border-t border-white/20 dark:border-gray-700/30 p-6 bg-white/30 dark:bg-gray-800/30">
+          <div className="flex gap-3">
             <Input
               ref={inputRef}
               value={input}
@@ -178,19 +178,19 @@ export function ChatInterface() {
               onKeyPress={handleKeyPress}
               placeholder="Ask me about campus life, schedules, events..."
               disabled={isLoading}
-              className="flex-1 rounded-full border-border/50 focus:border-primary/50 focus:ring-primary/20"
+              className="flex-1 rounded-2xl border-white/30 dark:border-gray-600/30 bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm focus:border-blue-400/50 focus:ring-blue-400/20 h-12"
             />
             <Button
               onClick={() => handleSendMessage()}
               disabled={!input.trim() || isLoading}
               size="icon"
-              className="rounded-full bg-primary hover:bg-primary/90"
+              className="rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transition-all duration-300 h-12 w-12"
             >
-              <Send className="h-4 w-4" />
+              <Send className="h-5 w-5" />
               <span className="sr-only">Send message</span>
             </Button>
           </div>
-          <div className="text-xs text-muted-foreground mt-2 text-center">
+          <div className="text-xs text-muted-foreground mt-3 text-center">
             Press Enter to send • Shift+Enter for new line
           </div>
         </div>
