@@ -9,17 +9,17 @@ export function Header() {
 
   return (
     <header className="border-b border-white/20 dark:border-gray-700/30 bg-white/60 dark:bg-gray-900/60 backdrop-blur-xl sticky top-0 z-50">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="container mx-auto px-6 py-4 flex items-center justify-between mobile\:flex-col mobile\:gap-3 mobile\:py-3">
         <div className="flex items-center gap-4">
           {/* Modern logo with gradient background */}
           <div className="p-3 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl shadow-lg">
             <GraduationCap className="h-7 w-7 text-white" />
           </div>
-          <div>
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent">
+          <div className="mobile\:text-center">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 bg-clip-text text-transparent mobile\:text-xl">
               CampusHelper AI
             </h1>
-            <p className="text-sm text-muted-foreground font-medium">Your intelligent campus assistant</p>
+            <p className="text-sm text-muted-foreground font-medium mobile\:text-xs">Your intelligent campus assistant</p>
           </div>
         </div>
 

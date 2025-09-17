@@ -21,7 +21,7 @@ export default function Home() {
           <Header />
           <main className="flex-1">
             <HeroSection />
-            <div className="flex items-center justify-center px-4 pb-8" id="chat-section">
+            <div className="flex items-center justify-center px-4 pb-8 padding-x-mobile" id="chat-section">
               <div className="w-full max-w-5xl mx-auto">
                 <ChatInterface />
               </div>

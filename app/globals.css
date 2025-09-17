@@ -123,6 +123,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
 /* Enhanced scrollbar styling and added smooth animations */
@@ -145,9 +148,69 @@
 }
 
 /* Enhanced responsive design and mobile optimizations */
+@media (max-width: 1024px) {
+  .container-responsive {
+    @apply px-4;
+  }
+  
+  .text-responsive-lg {
+    @apply text-base;
+  }
+  
+  .feature-card {
+    @apply p-6;
+  }
+}
+
 @media (max-width: 768px) {
   .chat-scrollbar::-webkit-scrollbar {
     width: 4px;
+  }
+  
+  .hero-title {
+    @apply text-3xl;
+  }
+  
+  .hero-subtitle {
+    @apply text-base;
+  }
+  
+  .feature-grid {
+    @apply grid-cols-1 gap-6;
+  }
+  
+  .chat-interface {
+    @apply h-[450px];
+  }
+  
+  .btn-primary-mobile {
+    @apply w-full;
+  }
+  
+  .flex-mobile-col {
+    @apply flex-col;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    @apply text-2xl;
+  }
+  
+  .hero-subtitle {
+    @apply text-sm;
+  }
+  
+  .feature-card {
+    @apply p-4;
+  }
+  
+  .chat-interface {
+    @apply h-[400px];
+  }
+  
+  .padding-x-mobile {
+    @apply px-3;
   }
 }
 
@@ -160,9 +223,34 @@
   .text-responsive {
     @apply text-sm sm:text-base lg:text-lg;
   }
+  
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl lg:text-2xl;
+  }
 
   .shadow-3xl {
     box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.25);
+  }
+  
+  /* Tablet and mobile specific utilities */
+  .tablet\:grid-cols-1 {
+    @apply md:grid-cols-1;
+  }
+  
+  .tablet\:gap-4 {
+    @apply md:gap-4;
+  }
+  
+  .mobile\:flex-col {
+    @apply sm:flex-col;
+  }
+  
+  .mobile\:text-center {
+    @apply sm:text-center;
+  }
+  
+  .mobile\:w-full {
+    @apply sm:w-full;
   }
 }
 
