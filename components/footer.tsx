@@ -8,8 +8,7 @@ export function Footer() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 mobile\:flex-col">
           <div className="text-center lg:text-left mobile\:text-center">
             <p className="text-sm text-muted-foreground mb-2">
-              Built with <span className="text-blue-600 dark:text-blue-400 font-semibold">Groq API</span> for Hackathon
-              2025
+              Built with <span className="text-blue-600 dark:text-blue-400 font-semibold">Groq API</span> ⚡️
             </p>
             <p className="text-xs text-muted-foreground">Powered by AI • Designed for Students • Built with ❤️</p>
           </div>
