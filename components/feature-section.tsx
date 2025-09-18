@@ -2,10 +2,8 @@
 
 import { Card } from "@/components/ui/card"
 import { Brain, Zap, Clock } from "lucide-react"
-import { useScrollAnimation } from "@/hooks/use-scroll-animation"
 
 export function FeatureSection() {
-  const { ref, inView } = useScrollAnimation({ threshold: 0.1, triggerOnce: true })
   
   const features = [
     {
@@ -31,7 +29,7 @@ export function FeatureSection() {
   return (
     <section className="py-16 md:py-20 px-4 padding-x-mobile" id="features-section">
       <div className="max-w-6xl mx-auto">
-        <div className={`text-center mb-12 md:mb-16 transition-all duration-700 ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+        <div className="text-center mb-12 md:mb-16">
           <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-foreground mb-4 text-balance">
             Why Choose CampusHelper AI?
           </h2>
@@ -41,24 +39,21 @@ export function FeatureSection() {
         </div>
 
         <div 
-          ref={ref}
           className="feature-grid grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8"
         >
           {features.map((feature, index) => (
             <Card
               key={index}
-              className={`feature-card relative border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm hover:bg-white/95 dark:hover:bg-gray-800/95 transition-all duration-500 hover:scale-105 hover:shadow-2xl group rounded-2xl ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              className="feature-card relative border-0 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm hover:bg-white/95 dark:hover:bg-gray-800/95 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl group"
             >
               {/* Glowing border effect */}
               <div
-                className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} rounded-2xl blur opacity-0 group-hover:opacity-20 transition-opacity duration-300`}
+                className={`absolute inset-0 bg-gradient-to-r ${feature.gradient} rounded-2xl blur opacity-0 group-hover:opacity-20 transition-all duration-300`}
               ></div>
 
               <div className="relative z-10">
                 <div
-                  className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-r ${feature.gradient} p-3 md:p-4 mb-6 mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300 ${inView ? 'scale-100' : 'scale-75'}`}
-                  style={{ transitionDelay: `${index * 150 + 200}ms` }}
+                  className={`w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-gradient-to-r ${feature.gradient} p-3 md:p-4 mb-6 mx-auto shadow-lg group-hover:shadow-xl transition-all duration-300`}
                 >
                   <feature.icon className="w-full h-full text-white" />
                 </div>
@@ -67,7 +62,7 @@ export function FeatureSection() {
                   {feature.title}
                 </h3>
 
-                <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 text-center leading-relaxed">
+                <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 text-center leading-relaxed max-w-xs mx-auto">
                   {feature.description}
                 </p>
               </div>
