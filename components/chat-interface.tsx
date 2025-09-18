@@ -32,17 +32,6 @@ export function ChatInterface() {
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView()
-  }
-
-  // Only scroll to bottom after the first message (welcome message) has been displayed
-  useEffect(() => {
-    // Skip auto-scrolling on initial load (only the welcome message exists)
-    if (messages.length > 1) {
-      scrollToBottom()
-    }
-  }, [messages])
 
   const resetConversation = () => {
     setMessages([
