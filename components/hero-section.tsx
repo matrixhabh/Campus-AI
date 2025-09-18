@@ -40,10 +40,13 @@ export function HeroSection() {
           <Button
             size="lg"
             onClick={scrollToChat}
-            className="btn-primary-mobile bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl text-base font-medium transition-all duration-300 transform hover:scale-105"
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl text-base font-medium transition-all duration-300 transform hover:scale-105 relative overflow-hidden group"
           >
-            Start Chatting
-            <ArrowRight className="ml-2 h-5 w-5" />
+            <span className="relative z-10 flex items-center">
+              Start Chatting
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </span>
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out skew-x-12"></span>
           </Button>
           <Button
             variant="outline"
