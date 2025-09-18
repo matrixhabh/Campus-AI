@@ -30,8 +30,28 @@ export function ChatInterface() {
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+  const messagesContainerRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLTextAreaElement>(null)
 
+
+  // Scroll to bottom of messages container
+  useEffect(() => {
+    scrollToBottom()
+  }, [messages, isLoading])
+
+  const scrollToBottom = () => {
+    if (messagesContainerRef.current) {
+      // Use requestAnimationFrame to ensure the DOM is updated before scrolling
+      requestAnimationFrame(() => {
+        messagesContainerRef.current!.scrollTop = messagesContainerRef.current!.scrollHeight;
+      });
+    }
+  }
+
+  // Focus input on initial load
+  useEffect(() => {
+    inputRef.current?.focus()
+  }, [])
 
   const resetConversation = () => {
     setMessages([
@@ -158,7 +178,7 @@ export function ChatInterface() {
         </div>
 
         {/* Messages Area */}
-        <div className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 chat-scrollbar bg-gradient-to-b from-transparent to-white/10 dark:to-gray-900/10">
+        <div ref={messagesContainerRef} className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 bg-gradient-to-b from-transparent to-white/10 dark:to-gray-900/10 max-h-[500px]" style={{ scrollBehavior: 'smooth' }}>
           {messages.map((message) => (
             <div key={message.id}>
               <MessageBubble message={message} />
