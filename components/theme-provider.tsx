@@ -7,5 +7,5 @@ import {
 } from 'next-themes'
 
 export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
-  return <NextThemesProvider {...props} enableSystem={true} disableTransitionOnChange={false}>{children}</NextThemesProvider>
+  return <NextThemesProvider {...props} enableSystem={true} disableTransitionOnChange={true}>{children}</NextThemesProvider>
 }
