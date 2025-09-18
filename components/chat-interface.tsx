@@ -5,7 +5,7 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { Send, Loader2, RotateCcw } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
 import { Card } from "@/components/ui/card"
 import { MessageBubble } from "@/components/message-bubble"
 import { QuickSuggestions } from "@/components/quick-suggestions"
@@ -30,7 +30,7 @@ export function ChatInterface() {
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
+  const inputRef = useRef<HTMLTextAreaElement>(null)
 
 
   const resetConversation = () => {
@@ -119,7 +119,7 @@ export function ChatInterface() {
     }
   }
 
-  const handleKeyPress = (e: React.KeyboardEvent) => {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault()
       handleSendMessage()
@@ -185,14 +185,14 @@ export function ChatInterface() {
         {/* Input Area */}
         <div className="border-t border-white/20 dark:border-gray-700/30 p-4 md:p-6 bg-white/40 dark:bg-gray-800/40">
           <div className="flex gap-3 mobile\:flex-col">
-            <Input
+            <Textarea
               ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyPress={handleKeyPress}
+              onKeyDown={handleKeyDown}
               placeholder="Ask me about campus life, schedules, events..."
               disabled={isLoading}
-              className="flex-1 rounded-2xl border-white/30 dark:border-gray-600/30 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm focus:border-blue-400/50 focus:ring-blue-400/20 h-12 text-base mobile\:w-full transition-all duration-200 hover:border-blue-300/50"
+              className="flex-1 rounded-2xl border-white/30 dark:border-gray-600/30 bg-white/60 dark:bg-gray-800/60 backdrop-blur-sm focus:border-blue-400/50 focus:ring-blue-400/20 text-base mobile\:w-full transition-all duration-200 hover:border-blue-300/50 min-h-12 max-h-32 resize-none"
             />
             <Button
               onClick={() => handleSendMessage()}
